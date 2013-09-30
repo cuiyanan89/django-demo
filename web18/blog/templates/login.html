@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	<script type="text/javascript">
+		var hf = new XMLHttpRequest();
+		hf.open("post","/login/",true);
+		hf.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		hf.onreadystatechange = process;
+		function login() {
+		
+		
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			hf.send("username="+username+"&password="+password);
+		}
+
+		function process(){
+			if (hf.readyState == 4 && hf.status ==200){
+
+				if (hf.responseText !=""){
+					var msg = document.getElementById('msg');
+					msg.innerHTML = "Hello" + hf.responseText;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<p id="msg"></p> <a href="/log_out">logout</a>
+	<div>
+		
+		<form action="" > 
+			<p>name <input type="text" name="username" id ="username"></p>
+			<p>passwd <input type="password" name="password" id="password"></p>
+			<p><input type="button" value="sign in" onclick="login();"></p>
+		</form>
+		
+	</div>
+</body>
+</html>

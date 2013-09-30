@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{%block title%} index {% endblock %}
+
+{% block header%}
+<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button class="btn btn-navbar" type="button" 
+				data-toggle="collapse" data-target=".nav-collapse">
+					<span class="iconbar"></span>
+					<span class="iconbar"></span>
+					<span class="iconbar"></span>
+				</button>
+				<a href="#" class="brand">main</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="">hello</a></li>
+						<li><a href="">python</a></li>
+						<li><a href="">world</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<div class="clear"></div>
+	</div>
+{% endblock%}
+
+{% block content%}
+<div>
+	<ul class="breadcrumb">
+	  <li> <span class="divider">|</span><a href="/index/">首页</a> <span class="divider">|</span></li>
+	  {% for nav in nav_list %}
+		<li><a href="/nav/{{nav.id}}/">{{nav.name}}</a><span class="divider">|</span></li>
+		{% endfor %}
+	  <li class="active">{{nav.name}}</li>
+	</ul>
+	{%for nn in nnav%}
+	<div><a href="/post/{{nn.id}}/">{{nn.title}}</a><img src="/static/{{nn.img}}" alt="" style="width:100px; height:100px;"></div>
+	
+	{%endfor%}
+	
+
+</div>
+
+
+
+
+{% endblock%}
+
+{% block footer%}
+	
+	<div id="footer" style="background-color:#dcdcdc; margin-top: 50px;">
+		<div class="container">
+			<p  style="color:gray">
+				Hello python world!
+			</p>
+		</div>
+	</div>
+{% endblock%}

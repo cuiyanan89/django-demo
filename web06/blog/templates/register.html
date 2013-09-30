@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>register</title>
+</head>
+<body>
+	<form action="" method="post">
+		{% csrf_token%}
+	username : <input type="text" name="username"><br>
+	password : <input type="password" name="password"><br>
+	birthday : <input type="date" name="birthday"><br>	
+	sex:  male <input type="radio" checked="checked" name="sex" value="m">
+		fmale <input type="radio" name="sex" value="f"><br>
+	<input type="submit" value="login">
+	</form>
+	
+	
+</body>
+</html>

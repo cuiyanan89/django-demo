@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{%block title%} index {% endblock %}
+
+{% block header%}
+<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button class="btn btn-navbar" type="button" 
+				data-toggle="collapse" data-target=".nav-collapse">
+					<span class="iconbar"></span>
+					<span class="iconbar"></span>
+					<span class="iconbar"></span>
+				</button>
+				<a href="#" class="brand">main</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="">hello</a></li>
+						<li><a href="">python</a></li>
+						<li><a href="">world</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<div class="clear"></div>
+	</div>
+{% endblock%}
+
+{% block content%}
+
+
+<!-- <div>
+	<ul>
+		<li style="display:inline-block"><a href="/index/">首页</a></li>
+		{% for nav in nav_list %}
+		<li style="display: inline-block;">
+			<a href="/nav/{{nav.id}}/">{{nav.name}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div> -->
+<div>
+
+	<div class="navbar navbar-inverse">
+		<p>welcome ,{{username}}</p>
+	</div>
+
+	<ul class="breadcrumb">
+	  <li><span class="divider">|</span><a href="/index/">首页</a><span class="divider">|</span></li>
+	  {% for menu in menus%}
+	  <li><a href="/menu/{{menu.id}}/">{{menu.title}}</a> <span class="divider">|</span></li>
+	  {% endfor%}
+	</ul>
+
+</div>
+
+<div>
+	{% for food in menulist.food_set.all %}
+		<li><a href="/#/{{food.id}}/">{{food.title}}</a>&nbsp;{{food.price}}
+			<img src="/static/{{food.img}}/" alt="">
+		</li>
+		
+		<li><select>
+	  <option>1</option>
+	  <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	  <option>5</option>
+	</select>
+		</li>
+	{% endfor%}
+</div>
+{% endblock %}
+
+{% block footer%}
+	
+	<div id="footer" style="background-color:#dcdcdc; margin-top: 50px;">
+		<div class="container">
+			<p  style="color:gray">
+				Hello python world!
+			</p>
+		</div>
+	</div>
+{% endblock%}

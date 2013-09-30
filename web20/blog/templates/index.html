@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<script type="text/javascript">
+		var hf = new XMLHttpRequest();
+		function login() {
+			
+			hf.open("post","/index/",true);
+			hf.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			hf.onreadystatechange = process;
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			hf.send("username="+username+"&password="+password);
+		}
+
+		function process(){
+			if (hf.readyState == 4 && hf.status ==200){
+				
+				if (hf.responseText !=""){
+					var msg = document.getElementById('msg');
+					msg.innerHTML = "welcome" + hf.responseText;
+				}else{
+					document.getElementById('username').value = ''
+					document.getElementById('password').value = ''
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	
+	{% if user.is_authenticated %}
+		<h1>{{user.username}}</h1>
+		<a href="/logout/">logout</a>
+	{% else%}
+	<div id="msg">
+		<form action="" > 
+			<p>name <input type="text" name="username" id ="username">
+			passwd <input type="password" name="password" id="password">
+			<input type="button" value="sign in" onclick="login();"></p>
+		</form>
+	</div>
+	{% endif %}
+	
+	{% if content%}
+			<p>{{content}}</p>
+
+		{%for comment in comment_list%}
+			<p>{{comment.content}}</p>
+		{% endfor %}
+
+		{% include 'comment.html' %}
+	{%endif%}
+
+	<div>
+		{% for i in contacts%}
+			<p><a href="/post/{{i.id}}/">{{i.title}}</a></p>
+		{%endfor%}
+		{%include 'page.html'%}
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{%for contact in contacts.paginator.page_range%}
+	&nbsp;
+	{% if contact == contacts.number%}
+		{{contact}}
+	{%else%}
+		<a href="?page={{contact}}" style="text-decoration:none;">{{contact}}</a>
+	{%endif%}
+{% endfor%}

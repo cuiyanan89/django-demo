@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+	{% load markup %}
+
+	{% if contacts%}
+	{% for post in contacts%}
+		<div class="post-wrap">
+			<div class="post">
+				<h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+				<div class="info">
+					<span>{{post.create_time|date:"m月 d, Y"}}</span>
+					<span>分类 : </span>
+					<span><a href="{{post.category.get_absolute_url}}">{{post.category}}</a></span>
+					<span>.</span>
+					<span class="ds-thread-count"data-thread-key="{{post.id}}"></span>
+					<!--多说js加载开始，一个页面只需要加载一次 -->
+					<script type="text/javascript">
+					var duoshuoQuery = {short_name:"danpy5"};
+					(function() {
+					    var ds = document.createElement('script');
+					    ds.type = 'text/javascript';ds.async = true;
+					    ds.src = 'http://static.duoshuo.com/embed.js';
+					    ds.charset = 'UTF-8';
+					    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+					})();
+					</script>
+					<!--多说js加载结束，一个页面只需要加载一次 -->
+					<span>.</span>
+					<span>点击数({{post.counts}}) </span>
+
+				</div>
+				{{post.contents_html|markdown:'codehilite'}}
+			</div>
+		</div>
+	{% endfor %}
+	{% include "page.html"%}
+	{% endif %}
+
+{% endblock%}

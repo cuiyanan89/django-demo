@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+
+{% block content%}
+
+<h1>{{flag}}</h1>
+{% for author in authors%}
+<li><a href="/authors/{{author.name}}/">{{author.name}}</a></li>
+{%endfor%}
+{% for book in books%}
+<li><a href="/books/{{book.name}}/">{{book.name}}</a></li>
+{%endfor%}
+
+{% endblock%}

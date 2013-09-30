@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{% block content%}
+{% load duoshuo_tags%}
+		<div class="post-wrap">
+			<div class="post">
+				<h2 ><a href="">{{post.title}}</a>reply</h2>
+				<p>asdfasdfkj</p>
+				<h3>sadf</h3>
+				<div>
+				</div>
+			</div>
+		</div>
+	{% if comments %}
+	<a name="comments">{% duoshuo_comments %}</a>
+	{% endif %}
+{% endblock%}

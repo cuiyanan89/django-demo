@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+
+	{% for pic in pic_list%}
+		<div>
+			{{pic.pic_title}}<br>
+			{{pic.pic_file}}
+			<img src="/static/{{pic.pic_file}}" alt="">
+		</div>
+	{% endfor %}
+	
+
+
+</body>
+</html>

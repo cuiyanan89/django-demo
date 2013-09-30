@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tjson</title>
+	<script type="text/javascript">
+		function tjson(){
+			var hf = new XMLHttpRequest();
+		
+			hf.open("get","/json/",true);
+			hf.send();
+			
+			hf.onreadystatechange = function(){
+				if (hf.readyState==4 && hf.status==200){
+					if (hf.responseText != ""){
+						text = eval("("+hf.responseText+")")
+						document.getElementById('title').innerHTML = text.title;
+						document.getElementById('content').innerHTML = text.content
+					}
+				}
+			}
+			
+		}
+
+		// setInterval("tjson();",1000);
+	</script>
+</head>
+<body>
+	<div>
+		<p id="title">Hello</p> 
+		<p id="content">content</p>
+	</div>
+</body>
+</html>

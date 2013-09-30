@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<link rel="stylesheet" href="">
+    <style type="text/css">
+        @import url("/static/css/index.css");
+    </style>
+    <script type="text/javascript" src="/static/js/index.js"></script>    
+</head>
+<body>
+	<h3> 商品列表</h3>
+   {% for img in imgs %}
+   	{{img}}
+   	<img class="aa1" src={{img}} alt="" >
+    
+   {% endfor %}
+    
+</body>
+</html>

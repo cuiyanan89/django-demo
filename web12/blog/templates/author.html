@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+
+
+{% block content%}
+
+<h1>{{author.name}}</h1>
+{% for book in books%}
+<li><a href="/books/{{book.name}}/">{{book.name}}</a></li>
+{%endfor%}
+
+{% endblock%}

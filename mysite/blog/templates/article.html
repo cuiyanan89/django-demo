@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% load markup %}
+	{% load duoshuo_tags%}
+	<div class="post-wrap">
+		<div class="post codehilite">
+			<!-- <h2><a href="/article/{{post.slug}}/">{{post.title}}</a></h2> -->
+			<h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+			<div class="info">
+				<span class="k">{{post.create_time|date:"m月 d, Y"}}</span>
+				<span>分类 : </span>
+				<span><a href="{{post.category.get_absolute_url}}">{{post.category}}</a></span>
+
+			</div>	
+			{{post.contents_html|markdown:'codehilite'}}
+		</div>
+	</div>
+	{% if comments %}
+	<div class="ds-thread" data-thread-key="{{post.id}}"></div>
+	<!-- <span class="ds-thread-count"data-thread-key="{{post.id}}"></span> -->
+	{% endif %}
+{% endblock %}

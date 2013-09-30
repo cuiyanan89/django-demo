@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+	<h1>Welcome !</h1>
+	<ul>
+	{% for pic in picture%}
+		<li><a href="/display_pic/{{pic.id}}">{{pic.pic_title}}</a></li>
+	{% endfor %}
+</ul>
+</body>
+</html>
